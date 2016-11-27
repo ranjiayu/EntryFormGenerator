@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<title>Create Form</title>
+	<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css">
+	<link rel="stylesheet" href="//cdn.bootcss.com/mobi.css/1.1.0/mobi.min.css"/>
+</head>
+<style type="text/css">
+	input{
+		height: 33px;
+	}
+	select{
+		background-color: #FFF;
+		border-radius: 3px;
+		height:33px;
+		width:100%;
+	}
+</style>
+<body>
+	<div class="flex-center">
+		<div class="container">
+			<h1>Create Form</h1>
+			<hr>
+			<form action="/form/create/" method="POST">
+			{% csrf_token %}
+
+			<div>
+				<div class="flex-left top-gap units-gap">
+					<div class="unit">
+						<div class="unit">
+							<h3>Title:</h3>
+						</div>
+						<input type="text" name="title" placeholder="800 meters Race">
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div class="flex-left top-gap">
+					<div class="unit">
+						<div class="unit">
+							<h3>Author:</h3>
+						</div>
+						<input type="text" name="author" placeholder="XiDian University PE department">
+					</div>
+				</div>
+			</div>
+
+			<div id="key1">
+				<div class="flex-left top-gap units-gap">
+					<div class="unit">
+						<div class="unit">
+							<h3>Key1:</h3>
+						</div>
+						<input type="text" name="key1" placeholder="Such as NAME(TYPE:Text)">
+					</div>
+					<div class="unit">
+						<div class="unit">
+							<h3>Type:</h3>
+						</div>
+						<select name="type1">
+							<option value="text">Text</option>
+							<option value="password">Password</option>
+							<option value="number">Number</option>
+							<option value="textarea">Textarea</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div id="key2">
+				<div class="flex-left units-gap">
+					<div class="unit">
+						<div class="unit">
+							<h3>Key2:</h3>
+						</div>
+						<input type="text" name="key2" placeholder="Such as StudentID(TYPE:Number)">
+					</div>
+					<div class="unit">
+						<div class="unit">
+							<h3>Type:</h3>
+						</div>
+						<select name="type2">
+							<option value="number">Number</option>
+							<option value="text">Text</option>
+							<option value="password">Password</option>
+							<option value="textarea">Textarea</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div id="result-password">
+				<div class="flex-left">
+					<div class="unit">
+						<div class="unit">
+							<h3>Password for Manage:</h3>
+						</div>
+						<input type="password" name="password" >
+					</div>
+
+				</div>
+			</div>
+
+			<div class="flex-center top-gap units-gap">
+				<div class="unit">
+					<input type="submit" class="btn btn-primary" value="Generate">
+				</div>
+				<div class="unit">
+					<input type="button" id="help" class="btn" value="How to use">
+				</div>
+			</div>
+
+			</form>
+
+			<hr>
+			<address>
+				Powered By <a href="https://github.com/ranjiayu">@ranjiayu</a>
+			</address>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	window.onload = function(){
+
+	};
+</script>
+</html>
