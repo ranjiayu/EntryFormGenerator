@@ -4,14 +4,57 @@
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	<title>Enter Form</title>
+	<title>{{data.title}}</title>
 	<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css">
 	<link rel="stylesheet" href="//cdn.bootcss.com/mobi.css/1.1.0/mobi.min.css"/>
 </head>
+<style type="text/css">
+	input {
+		width:100%;
+	}
+	textarea {
+		width:100%;
+	}
+	#createat{
+		color : #999;
+	}
+</style>
 <body>
 	<div class="flex-center">
 		<div class="container">
-			<h1>Enter Form</h1>
+			<h1>{{data.title}}</h1>
+			<hr>
+			<p>{{data.author}} <span id="createat">create at</span> {{data.create_time | date:"Y-m-j"}}</p>
+
+			<form action="/form/enter/{{data.id}}/" method="POST">
+				{% csrf_token %}
+
+			{% for i in key %}
+			<div>
+				<div class="flex-left units-gap">
+					<div class="unit">
+						<h3>{{i.keyLabel}}</h3>
+						{% if i.keyType == 'text' or i.keyType == 'number' or i.keyType == 'password' %}
+						<input type="{{i.keyType}}" name="{{i.id}}">
+						{% else %}
+						<textarea name={{i.id}}></textarea>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+			{% endfor %}
+
+			<div class="flex-center flex-middle top-gap units-gap">
+				<div class="unit">
+					<input type="submit" class="btn btn-primary" value="Submit">
+				</div>
+			</div>
+			</form>
+			<hr>
+			<div class="flex-middle flex-left top-gap">
+				<a href="/form/manage/{{data.id}}/">Check the result</a>
+			</div>
+			
 		</div>
 	</div>
 </body>

@@ -1,6 +1,6 @@
 import re
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,get_object_or_404
+from django.http import HttpResponse,HttpResponseRedirect
 from models import Form,Key,KeyContent
 # Create your views here.
 
@@ -36,8 +36,8 @@ def createForm(request):
 				new_key = Key(form = new_form,keyLabel = Klabel,keyType = Ktype)
 				new_key.save()
 
-
-			return HttpResponse('done')
+			form_id = new_form.id
+			return HttpResponseRedirect('/form/enter/' + str(form_id) + '/')
 		else:
 			return render(request,'form/error.html',{
 					'msg' : 'At least have 1 key'
@@ -46,7 +46,23 @@ def createForm(request):
 
 
 def enterForm(request,id):
-	return render(request,'form/enterForm.html')
+	if request.method == 'GET':
+		data = get_object_or_404(Form,pk = int(id))
+		key = data.key_set.all().order_by('create_time')
+		return render(request,'form/enterForm.html',{
+			'data' : data,
+			'key' : key,
+		})
+	elif request.method == 'POST':
+		data = get_object_or_404(Form,pk = int(id))
+		key = list(data.key_set.all().order_by('create_time'))
+
+		for i in key:
+			new_keycontent = KeyContent(key = i,content = request.POST[str(i.id)])
+			new_keycontent.save()
+
+		return HttpResponse('ok')
+
 
 def manageForm(request,id):
 	return render(request,'form/manageForm.html')

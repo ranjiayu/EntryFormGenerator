@@ -23,6 +23,9 @@ class Key(models.Model):
 
 	create_time = models.DateTimeField(auto_now_add = True)
 
+	def __unicode__(self):
+		return self.keyLabel
+
 	class Meta:
 		ordering = ['-create_time']
 
@@ -31,6 +34,12 @@ class KeyContent(models.Model):
 	key = models.ForeignKey('Key',null = True,on_delete = models.CASCADE)
 	content = models.TextField()
 	create_time = models.DateTimeField(auto_now_add = True)
+
+	def __unicode__(self):
+		return self.content
+
+	class Meta:
+		ordering = ['-create_time']
 
 
 
