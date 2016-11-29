@@ -15,7 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -26,7 +25,6 @@ SECRET_KEY = 'q5e%i(5c4znh!q9@6e8s7=3+w&z)vk544n7pd=^^1b^cz%c&nr'
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -70,7 +68,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'generateJoin.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
@@ -79,16 +76,15 @@ DATABASES = {
     #     'ENGINE': 'django.db.backends.sqlite3',
     #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     # },
-    'default' : {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME' : 'joingenerator',
-        'USER' : 'root',
-        'PASSWORD' : '123456',
-        'HOST' : '',
-        'PORT' : '3306'
+        'NAME': 'joingenerator',
+        'USER': 'root',
+        'PASSWORD': '123456',
+        'HOST': '',
+        'PORT': '3306'
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -108,7 +104,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
@@ -122,14 +117,13 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-SITE_ROOT=os.getcwd()
-STATIC_ROOT = os.path.join(SITE_ROOT,'static')
+SITE_ROOT = os.getcwd()
+STATIC_ROOT = os.path.join(SITE_ROOT, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    ("img", os.path.join(STATIC_ROOT,'img')),
-    ("js", os.path.join(STATIC_ROOT,'js')),
-    ("css", os.path.join(STATIC_ROOT,'css')),
+    ("img", os.path.join(STATIC_ROOT, 'img')),
+    ("js", os.path.join(STATIC_ROOT, 'js')),
+    ("css", os.path.join(STATIC_ROOT, 'css')),
 )

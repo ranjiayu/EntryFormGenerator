@@ -8,9 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css">
 	<link rel="stylesheet" href="//cdn.bootcss.com/mobi.css/1.1.0/mobi.min.css"/>
 </head>
-<script type="text/javascript">
 
-</script>
 <body>
 	<div class="flex-center">
 		<div class="container">
@@ -18,29 +16,28 @@
 			<hr>
 			{% if pass %}
 			<div class="scroll-view">
-				<div class="flex-center">
-					{% for k in key %}
-					<div class="unit">
-						<h4>{{k.keyLabel}}</h4>
-					</div>
-					{% endfor %}
-				</div>
-
-				<div class="flex-center">
-					{% for i in key_content %}
-					<div class="unit">
-					{% for j in i %}
-						<p>
-						{% if j.content %}
-						{{j.content}}
-						{% else %}
-						Null
-						{% endif %}
-						</p>
-					{% endfor %}
-					</div>
-					{% endfor %}
-				</div>
+				<table class="table">
+					<thead>
+						<tr>
+							{% for k in key %}
+							<th>{{k.keyLabel}}</th>
+							{% endfor %}
+						</tr>
+					</thead>
+					<tbody>
+						{% for i in key_data %}
+						<tr>
+							{% for j in i %}
+							{% if j.content %}
+							<td>{{j.content}}</td>
+							{% else %}
+							<td>Null</td>
+							{% endif %}
+							{% endfor %}
+						</tr>
+						{% endfor %}
+					</tbody>
+				</table>
 			</div>
 			{% else %}
 			{% if msg %}
