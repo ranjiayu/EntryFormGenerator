@@ -9,15 +9,7 @@
 	<link rel="stylesheet" href="//cdn.bootcss.com/mobi.css/1.1.0/mobi.min.css"/>
 </head>
 <style type="text/css">
-	input{
-		height: 33px;
-	}
-	select{
-		background-color: #FFF;
-		border-radius: 3px;
-		height:33px;
-		width:100%;
-	}
+input,select{height:33px}select{background-color:#fff;border-radius:3px;width:100%}.must{color:#e03e3e}#addKey{cursor:pointer}
 </style>
 <body>
 	<div class="flex-center">
@@ -28,10 +20,10 @@
 			{% csrf_token %}
 
 			<div>
-				<div class="flex-left top-gap units-gap">
+				<div class="flex-left units-gap">
 					<div class="unit">
 						<div class="unit">
-							<h3>Title:</h3>
+							<h3>Title</h3>
 						</div>
 						<input type="text" name="title" placeholder="800 meters Race">
 					</div>
@@ -42,66 +34,74 @@
 				<div class="flex-left top-gap">
 					<div class="unit">
 						<div class="unit">
-							<h3>Author:</h3>
+							<h3>Author</h3>
 						</div>
 						<input type="text" name="author" placeholder="XiDian University PE department">
 					</div>
 				</div>
 			</div>
-
-			<div id="key1">
-				<div class="flex-left top-gap units-gap">
-					<div class="unit">
+			<br>
+			<hr>
+			<div class="scroll-view">
+				<div id="key1">
+					<div class="flex-left top-gap units-gap">
 						<div class="unit">
-							<h3>Key1:</h3>
+							<div class="unit">
+								<h3>Input Name1<span class="must">*</span></h3>
+							</div>
+							<input type="text" name="key1" placeholder="Such as NAME(TYPE:Text)">
 						</div>
-						<input type="text" name="key1" placeholder="Such as NAME(TYPE:Text)">
-					</div>
-					<div class="unit">
 						<div class="unit">
-							<h3>Type:</h3>
+							<div class="unit">
+								<h3>Type</h3>
+							</div>
+							<select name="type1">
+								<option value="text">Text</option>
+								<option value="password">Password</option>
+								<option value="number">Number</option>
+								<option value="textarea">Textarea</option>
+							</select>
 						</div>
-						<select name="type1">
-							<option value="text">Text</option>
-							<option value="password">Password</option>
-							<option value="number">Number</option>
-							<option value="textarea">Textarea</option>
-						</select>
-					</div>
-				</div>
-			</div>
-
-			<div id="key2">
-				<div class="flex-left units-gap">
-					<div class="unit">
-						<div class="unit">
-							<h3>Key2:</h3>
-						</div>
-						<input type="text" name="key2" placeholder="Such as StudentID(TYPE:Number)">
-					</div>
-					<div class="unit">
-						<div class="unit">
-							<h3>Type:</h3>
-						</div>
-						<select name="type2">
-							<option value="number">Number</option>
-							<option value="text">Text</option>
-							<option value="password">Password</option>
-							<option value="textarea">Textarea</option>
-						</select>
 					</div>
 				</div>
-			</div>
 
+				<br>
+				<a id="addKey">Add One</a>
+				<div id="addDiv">
+					
+				</div>
+<!-- 				<div id="key2">
+					<div class="flex-left units-gap">
+						<div class="unit">
+							<div class="unit">
+								<h3>Input Name2<span class="must">*</span></h3>
+							</div>
+							<input type="text" name="key2" placeholder="Such as StudentID(TYPE:Number)">
+						</div>
+						<div class="unit">
+							<div class="unit">
+								<h3>Type</h3>
+							</div>
+							<select name="type2">
+								<option value="number">Number</option>
+								<option value="text">Text</option>
+								<option value="password">Password</option>
+								<option value="textarea">Textarea</option>
+							</select>
+						</div>
+					</div>
+				</div> -->
+
+				<br>
+			</div>
+			<br>
+			<hr>
 			<div id="result-password">
 				<div class="flex-left">
 					<div class="unit">
-						<div class="unit">
-							<h3>Password for Manage:</h3>
-						</div>
-						<input type="password" name="password" >
+						<h3>Password for seeing result</h3>
+						<input type="password" name="password" id="password">
 					</div>
-
 				</div>
 			</div>
 
@@ -110,7 +110,7 @@
 					<input type="submit" class="btn btn-primary" value="Generate">
 				</div>
 				<div class="unit">
-					<input type="button" id="help" class="btn" value="How to use">
+					<a href="https://github.com/ranjiayu" class="btn">How to use</a>
 				</div>
 			</div>
 

@@ -9,22 +9,27 @@
 	<link rel="stylesheet" href="//cdn.bootcss.com/mobi.css/1.1.0/mobi.min.css"/>
 </head>
 <style type="text/css">
-	input {
-		width:100%;
-	}
-	textarea {
-		width:100%;
-	}
-	#createat{
-		color : #999;
-	}
+input,textarea{width:100%}textarea{height:100px;}#createat{color:#999}
 </style>
 <body>
 	<div class="flex-center">
 		<div class="container">
-			<h1>{{data.title}}</h1>
+			<h1>
+			{% if data.title %}
+			{{data.title}}
+			{% else %}
+			Form
+			{% endif %}
+			</h1>
 			<hr>
-			<p>{{data.author}} <span id="createat">create at</span> {{data.create_time | date:"Y-m-j"}}</p>
+			<p>
+			{% if data.author %}
+			{{data.author}} 
+			{% else %}
+			Somebody
+			{% endif %}
+			<span id="createat">create at</span> {{data.create_time | date:"Y-m-j"}}
+			</p>
 
 			<form action="/form/enter/{{data.id}}/" method="POST">
 				{% csrf_token %}

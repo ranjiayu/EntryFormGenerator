@@ -7,6 +7,7 @@ from django.db import models
 class Form(models.Model):
 	title = models.CharField(max_length = 70)
 	author = models.CharField(max_length = 70)
+	password = models.CharField(max_length = 70,default = '')
 	create_time = models.DateTimeField(auto_now_add = True)
 
 	def __unicode__(self):
@@ -18,8 +19,8 @@ class Form(models.Model):
 
 class Key(models.Model):
 	form = models.ForeignKey('Form',null = True,on_delete = models.CASCADE)
-	keyLabel = models.CharField(max_length = 70)
-	keyType = models.CharField(max_length = 10)
+	keyLabel = models.CharField(max_length = 70,null = False,blank = False)
+	keyType = models.CharField(max_length = 10,null = False,blank = False)
 
 	create_time = models.DateTimeField(auto_now_add = True)
 

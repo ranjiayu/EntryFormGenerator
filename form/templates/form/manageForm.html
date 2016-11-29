@@ -8,10 +8,54 @@
 	<link rel="stylesheet" type="text/css" href="//cdn.bootcss.com/normalize/5.0.0/normalize.min.css">
 	<link rel="stylesheet" href="//cdn.bootcss.com/mobi.css/1.1.0/mobi.min.css"/>
 </head>
+<script type="text/javascript">
+
+</script>
 <body>
 	<div class="flex-center">
 		<div class="container">
-			<h1>Manage Form</h1>
+			<h1>Result For {{data.title}}</h1>
+			<hr>
+			{% if pass %}
+			<div class="scroll-view">
+				<div class="flex-center">
+					{% for k in key %}
+					<div class="unit">
+						<h4>{{k.keyLabel}}</h4>
+					</div>
+					{% endfor %}
+				</div>
+
+				<div class="flex-center">
+					{% for i in key_content %}
+					<div class="unit">
+					{% for j in i %}
+						<p>
+						{% if j.content %}
+						{{j.content}}
+						{% else %}
+						Null
+						{% endif %}
+						</p>
+					{% endfor %}
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+			{% else %}
+			{% if msg %}
+			<p style="color:red;">
+				{{msg}}
+			</p>
+			{% endif %}
+			<p>Please input password to continue:</p>
+			<form action="/form/manage/{{data.id}}/" method="POST">
+				{% csrf_token %}
+				<input type="password" name="password">
+				<input type="submit" class="btn btn-primary" value="OK">
+			</form>
+			{% endif %}
+
 		</div>
 	</div>
 </body>
